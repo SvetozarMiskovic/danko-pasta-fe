@@ -163,7 +163,9 @@ const usePokemons = () => {
     const isDev = env.VITE_NODE_ENV === 'development';
     try {
       const response = await fetch(
-        isDev ? env.VITE_DEV_SERVER : `${env.VITE_PROD_SERVER}/${id}}`,
+        isDev
+          ? env.VITE_DEV_SERVER
+          : `${env.VITE_PROD_SERVER}/api/pokemons/${id}}`,
         {
           method: 'GET',
           headers: {
