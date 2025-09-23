@@ -18,13 +18,16 @@ export const useLocations = () => {
 
   useEffect(() => {
     updateSearchParams({ page, limit });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     fetchLocations();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, limit]);
 
-  const fetchLocations = async () => {
+  async function fetchLocations() {
     const searchQuery = new URLSearchParams({
       page: page.toString(),
       limit: limit.toString(),
@@ -66,7 +69,7 @@ export const useLocations = () => {
     } catch (error) {
       console.warn(error);
     }
-  };
+  }
 
   const goNextPage = (page: number) => {
     updateSearchParams({ page: page + 1 });

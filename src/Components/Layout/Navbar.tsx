@@ -1,6 +1,5 @@
 import { Link, useLocation } from 'react-router';
-import { Bug, BugIcon, Home, LocateIcon } from 'lucide-react';
-import en from '../../locales/en/translation.json';
+import { BugIcon } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContextProvider';
 import HamburgerIcon from '../Reusable/HamburgerIcon';
 import Menu from '../Menu';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useTranslate } from '../hooks/useTranslate';
 
@@ -50,6 +50,8 @@ const MainPage = () => {
       clearInterval(feInterval);
       clearInterval(beInterval);
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

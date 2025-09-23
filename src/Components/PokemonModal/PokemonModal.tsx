@@ -20,6 +20,7 @@ const PokemonModal = ({ trigger, title, id }: PokemonDetailModalProps) => {
 
   useEffect(() => {
     if (isOpen) fetchPokemonDetails(Number(id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   return (

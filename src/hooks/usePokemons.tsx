@@ -77,7 +77,7 @@ const usePokemons = () => {
 
     if (cache) {
       const enrichedData = cache.data.map((d) => {
-        let spriteObj: SpritesResponse = {
+        const spriteObj: SpritesResponse = {
           backDefault: '',
           frontDefault: '',
           frontShiny: '',
@@ -145,10 +145,12 @@ const usePokemons = () => {
 
   useEffect(() => {
     updateSearchParams({ page, limit, search });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     fetchPokemons();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, limit, debouncedSearch]);
 
   const fetchPokemonDetails = async (id: string) => {

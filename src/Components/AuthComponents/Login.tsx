@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { loginSchema } from '../../schemas/login.schema';
 import { ZodError } from 'zod';
 import { CircleDashed } from 'lucide-react';
-import { useToast } from '../../contexts/ToastProvider';
 import { useTheme } from '../../contexts/ThemeContextProvider';
 import { useTranslate } from '../../hooks/useTranslate';
 

@@ -49,7 +49,7 @@ export const usePokemonDetails = () => {
 
   const fetchPokemonDetails = async (id: number) => {
     const cacheKey = `pokemon-${id}`;
-    const cache = await getCache<Pokemon, {}>(cacheKey);
+    const cache = await getCache<Pokemon, Record<string, unknown>>(cacheKey);
 
     if (cache) {
       cache.data.sprites.other['official-artwork'].front_default =
@@ -99,6 +99,7 @@ export const usePokemonDetails = () => {
       setLoading(false);
       setPokemon(data.data);
     } catch (error) {
+      console.warn(error);
       throw error;
     } finally {
       setLoading(false);
@@ -118,7 +119,9 @@ export const usePokemonDetails = () => {
     });
 
     const cacheKey = `pokemon-${id}-${section}`;
-    const cache = await getCache<SectionDetails, {}>(cacheKey);
+    const cache = await getCache<SectionDetails, Record<string, unknown>>(
+      cacheKey
+    );
 
     if (cache) {
       setDetails((prev) => ({ ...prev, [section]: cache.data }));
