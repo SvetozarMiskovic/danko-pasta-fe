@@ -23,6 +23,9 @@ const PokemonList = () => {
     updateSearchParams({ page: 1, search: e.target.value.toString() });
   }
   const { t } = useTranslate();
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className='w-full max-w-7xl mx-auto place-self-start duration-200 p-2'>
       <div className='flex flex-col gap-2'>
@@ -105,7 +108,7 @@ const PokemonList = () => {
             goPrevPage={goPrevPage}
           />
         )}
-        {pokemons.length < 1 && !loading && (
+        {pokemons.length < 1 && !search && (
           <div
             className={`p-4 border-t border-black ${
               isLight ? 'text-black' : 'text-white'
