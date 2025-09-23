@@ -1,5 +1,4 @@
 import { HashIcon } from 'lucide-react';
-import React from 'react';
 import { useTheme } from '../../../contexts/ThemeContextProvider';
 
 const PokemonDetailIndex = ({ index }: { index: number }) => {

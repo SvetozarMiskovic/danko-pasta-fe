@@ -35,7 +35,6 @@ const LanguageSwitch = () => {
     () => (localStorage.getItem('i18nextLng') as Language) || 'en'
   );
   const [open, setOpen] = useState(false);
-  const [height, setHeight] = useState<number | undefined>(0);
   const { theme } = useTheme();
   const isLight = theme === 'light';
   const { changeLanguage, t } = useTranslate();

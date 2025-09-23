@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContextProvider';
 import { ArrowDown, ArrowUp } from 'lucide-react';
 import ThemeToggle from './Reusable/ThemeToggle';
 import Logout from './AuthComponents/Logout';
 import LanguageSwitch from './LanguageSwitch';
-import HamburgerIcon from './Reusable/HamburgerIcon';
 import { useTheme } from '../contexts/ThemeContextProvider';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslate } from '../hooks/useTranslate';

@@ -59,7 +59,7 @@ const usePokemons = () => {
   const [error, setError] = useState<string | null>(null);
   const { addToast } = useToast();
   const { updateSearchParams, page, limit, search } = useSearchParams();
-  const { getCache, setCache, removeCache } = useCache();
+  const { getCache, setCache } = useCache();
 
   const debouncedSearch = useDebounce(search, 500);
 

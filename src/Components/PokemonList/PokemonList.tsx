@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import usePokemons, { type SpritesData } from '../../hooks/usePokemons';
+import { useState } from 'react';
+import usePokemons from '../../hooks/usePokemons';
 import Pagination from '../Reusable/Pagination/Pagination';
 import PokemonModal from '../PokemonModal/PokemonModal';
 import PokemonListCard from './PokemonListCard';

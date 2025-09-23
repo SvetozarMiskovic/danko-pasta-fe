@@ -14,7 +14,7 @@ const Register = () => {
   const isLight = theme === 'light';
   const [isSubmiting, setIsSubmiting] = useState(false);
   const navigate = useNavigate();
-  const { register, login, isLoading } = useAuth();
+  const { register, login } = useAuth();
   const { t } = useTranslate();
 
   const [formData, setFormData] = React.useState({

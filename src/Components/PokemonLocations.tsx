@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useLocations } from '../hooks/useLocations';
 import Pagination from './Reusable/Pagination/Pagination';
 import { useTheme } from '../contexts/ThemeContextProvider';
-import { t } from 'i18next';
 import type { TranslationKeys } from '../types';
 import { useTranslate } from '../hooks/useTranslate';
 
