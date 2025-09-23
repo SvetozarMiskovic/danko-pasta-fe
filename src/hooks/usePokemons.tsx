@@ -3,6 +3,7 @@ import { useSearchParams } from './useSearchParams';
 import { useToast } from '../contexts/ToastProvider';
 import { useCache } from './useCache';
 import { useDebounce } from './useDebounce';
+import env from '../env';
 
 export interface SpritesResponse {
   backDefault: string;
@@ -95,9 +96,14 @@ const usePokemons = () => {
 
       return;
     }
+
+    const isDev = env.VITE_NODE_ENV === 'development';
+
     try {
       const response = await fetch(
-        `http://localhost:4000/api/pokemons?${queryParams}`,
+        isDev
+          ? env.VITE_DEV_SERVER
+          : `${env.VITE_PROD_SERVER}/api/pokemons?${queryParams}`,
         {
           method: 'GET',
           headers: {
@@ -154,9 +160,10 @@ const usePokemons = () => {
   }, [page, limit, debouncedSearch]);
 
   const fetchPokemonDetails = async (id: string) => {
+    const isDev = env.VITE_NODE_ENV === 'development';
     try {
       const response = await fetch(
-        `http://localhost:4000/api/pokemons/${id}}`,
+        isDev ? env.VITE_DEV_SERVER : `${env.VITE_PROD_SERVER}/${id}}`,
         {
           method: 'GET',
           headers: {

@@ -10,6 +10,7 @@ import {
   type PokemonType,
 } from '../types/index';
 import { useCache } from './useCache';
+import env from '../env';
 
 export type SectionDetails = {
   abilities: Ability[] | null;
@@ -60,14 +61,19 @@ export const usePokemonDetails = () => {
       setLoading(false);
       return;
     }
+    const isDev = env.VITE_NODE_ENV === 'development';
+
     try {
-      const response = await fetch(`http://localhost:4000/api/pokemons/${id}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-      });
+      const response = await fetch(
+        isDev ? env.VITE_DEV_SERVER : `${env.VITE_PROD_SERVER}/${id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        }
+      );
 
       if (!response.ok) {
         throw new Error('Failed to fetch pokemons');

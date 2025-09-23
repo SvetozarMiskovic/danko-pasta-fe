@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { useToast } from './ToastProvider';
+import env from '../env';
 
 type RegisterUserParams = LoginUserParams & { name: string };
 interface AuthContextType {
@@ -54,15 +55,23 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const refresh = async () => {
-      try {
-        const response = await fetch(`http://localhost:4000/api/auth/refresh`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+      const isDev = env.VITE_NODE_ENV === 'development';
+      console.log(isDev, env.VITE_DEV_SERVER, env.VITE_PROD_SERVER);
 
-          credentials: 'include',
-        });
+      try {
+        const response = await fetch(
+          isDev
+            ? env.VITE_DEV_SERVER
+            : `${env.VITE_PROD_SERVER}/api/auth/refresh`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+
+            credentials: 'include',
+          }
+        );
 
         const data = await response.json();
 
@@ -87,14 +96,18 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
     email,
     password,
   }: LoginUserParams): Promise<LoginResponse> {
-    const response = await fetch(`http://localhost:4000/api/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify({ email, password }),
-    });
+    const isDev = env.VITE_NODE_ENV === 'development';
+    const response = await fetch(
+      isDev ? env.VITE_DEV_SERVER : `${env.VITE_PROD_SERVER}/api/auth/login`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ email, password }),
+      }
+    );
     if (!response.ok) {
       const data = (await response.json()) as AuthResponse;
       addToast(data.message, 'error');
@@ -110,14 +123,18 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   const logout = async () => {
+    const isDev = env.VITE_NODE_ENV === 'development';
     try {
-      const response = await fetch(`http://localhost:4000/api/auth/logout`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-      });
+      const response = await fetch(
+        isDev ? env.VITE_DEV_SERVER : `${env.VITE_PROD_SERVER}/api/auth/logout`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
@@ -139,13 +156,17 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
     password,
     name,
   }: RegisterUserParams): Promise<RegisterResponse> {
-    const response = await fetch(`http://localhost:4000/api/auth/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password, name }),
-    });
+    const isDev = env.VITE_NODE_ENV === 'development';
+    const response = await fetch(
+      isDev ? env.VITE_DEV_SERVER : `${env.VITE_PROD_SERVER}/api/auth/register`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password, name }),
+      }
+    );
 
     if (!response.ok) {
       const data = (await response.json()) as AuthResponse;

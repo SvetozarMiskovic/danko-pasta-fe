@@ -6,6 +6,7 @@ import {
 } from './usePokemons';
 import { useCache } from './useCache';
 import type { NamedAPIResource } from '../types';
+import env from '../env';
 
 export const useLocations = () => {
   const [locations, setLocations] = useState<{ name: string; url: string }[]>(
@@ -18,7 +19,6 @@ export const useLocations = () => {
 
   useEffect(() => {
     updateSearchParams({ page, limit });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -44,8 +44,12 @@ export const useLocations = () => {
       }
       setLoadingLocations(true);
 
+      const isDev = env.VITE_NODE_ENV === 'development';
+
       const response = await fetch(
-        `http://localhost:4000/api/pokemons/locations?${searchQuery}`,
+        isDev
+          ? env.VITE_DEV_SERVER
+          : `${env.VITE_PROD_SERVER}/api/pokemons/locations?${searchQuery}`,
         {
           method: 'GET',
           headers: {
