@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useTheme } from '../../../contexts/ThemeContextProvider';
 import { useSearchParams } from '../../../hooks/useSearchParams';
 import type { PaginationMeta } from '../../../hooks/usePokemons';
@@ -13,7 +13,7 @@ const PaginationPages = ({
 }) => {
   const { theme } = useTheme();
   const isLight = theme === 'light';
-  const { updateSearchParams, limit, page } = useSearchParams();
+  const { updateSearchParams, page } = useSearchParams();
 
   const pageNumbers = useMemo(() => {
     if (!pagination) return [];

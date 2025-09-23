@@ -16,7 +16,7 @@ const Logout = ({ className, cb }: { className?: string; cb?: () => void }) => {
         setTimeout(() => {
           logout();
           setIsLoggingOut(false);
-          cb && cb();
+          if (cb) cb();
         }, 500);
       }}
     >

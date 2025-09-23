@@ -5,27 +5,8 @@ import { useTheme } from '../../contexts/ThemeContextProvider';
 import HamburgerIcon from '../Reusable/HamburgerIcon';
 import Menu from '../Menu';
 import { useTranslate } from '../../hooks/useTranslate';
-
-export const links = [
-  {
-    id: 1,
-    text: 'Home',
-    path: '/',
-    icon: Home,
-  },
-  {
-    id: 2,
-    text: 'Pokemons',
-    path: '/pokemons',
-    Icon: Bug,
-  },
-  {
-    id: 3,
-    text: 'Locations',
-    path: '/pokemons/locations',
-    icon: LocateIcon,
-  },
-];
+import type { TranslationKeys } from '../../types';
+import { links } from '../../constants/links';
 
 const Navbar = () => {
   const { theme } = useTheme();
@@ -54,7 +35,7 @@ const Navbar = () => {
         <div className='hidden md:block'>
           <ul className='flex items-center gap-5'>
             {links.map((link) => {
-              const string = ('nav_' + link.text) as keyof typeof en;
+              const string = 'nav_' + link.text;
               return (
                 <li
                   key={link.id}
@@ -68,7 +49,7 @@ const Navbar = () => {
                       : 'text-gray-100'
                   } hover:text-gray-500 hover:underline`}
                 >
-                  <Link to={link.path}>{t(string)}</Link>
+                  <Link to={link.path}>{t(string as TranslationKeys)}</Link>
                 </li>
               );
             })}

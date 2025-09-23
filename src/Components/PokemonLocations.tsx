@@ -19,7 +19,7 @@ function PokemonLocations() {
   const { t } = useTranslate();
   useEffect(() => {
     fetchLocations();
-  }, []);
+  }, [fetchLocations]);
 
   return (
     <div className='max-w-7xl w-full mx-auto my-4  flex flex-col gap-4 p-2'>

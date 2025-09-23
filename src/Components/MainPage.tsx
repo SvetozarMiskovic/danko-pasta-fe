@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useTranslate } from '../hooks/useTranslate';
 
-React;
 const MainPage = () => {
   const { t } = useTranslate();
   const fe = [

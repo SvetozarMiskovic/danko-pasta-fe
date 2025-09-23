@@ -14,7 +14,6 @@ const Login = () => {
   const { login } = useAuth();
   const { theme } = useTheme();
   const [submiting, setSubmiting] = useState(false);
-  const { addToast } = useToast();
   const navigate = useNavigate();
   const isLight = theme === 'light';
 

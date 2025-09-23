@@ -3,11 +3,11 @@ import ThemeToggle from '../Reusable/ThemeToggle';
 import { useSidebar } from '../../contexts/SidebarProvider';
 import { useTheme } from '../../contexts/ThemeContextProvider';
 import { Link, useLocation } from 'react-router';
-import { links } from '../Layout/Navbar';
 import Logout from './Logout';
 import type { TranslationKeys } from '../../types';
 import { useTranslate } from '../../hooks/useTranslate';
 import LanguageSwitch from '../LanguageSwitch';
+import { links } from '../../constants/links';
 
 const MobileSidebar = () => {
   const { isOpen: open, closeSidebar } = useSidebar();
@@ -32,7 +32,7 @@ const MobileSidebar = () => {
     });
 
     return () => window.removeEventListener('resize', updateHeight);
-  }, []);
+  }, [closeSidebar]);
 
   useEffect(() => {
     if (open) {
