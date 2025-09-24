@@ -12,6 +12,11 @@ export const ENDPOINTS = {
 };
 
 export const URL_CONSTANTS = {
+  AUTH: {
+    LOGIN: '/login',
+    REGISTER: '/register',
+    
+  },
   REFRESH_USER: () =>
     isDev
       ? `${env.VITE_DEV_SERVER}${ENDPOINTS.REFRESH}`

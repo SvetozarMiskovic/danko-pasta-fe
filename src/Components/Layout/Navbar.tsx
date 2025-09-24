@@ -6,10 +6,10 @@ import Menu from '../Menu';
 import { useTranslate } from '../../hooks/useTranslate';
 import type { TranslationKeys } from '../../types';
 import { links } from '../../constants/links';
+import NavbarLink from './NavbarLink';
 
 const Navbar = () => {
   const { theme } = useTheme();
-  const location = useLocation();
   const isLight = theme === 'light';
   const { t } = useTranslate();
 
@@ -35,22 +35,7 @@ const Navbar = () => {
           <ul className='flex items-center gap-5'>
             {links.map((link) => {
               const string = 'nav_' + link.text;
-              return (
-                <li
-                  key={link.id}
-                  className={`font-bold text-lg  ${
-                    location.pathname === link.path
-                      ? isLight
-                        ? 'text-gray-500 underline'
-                        : 'text-gray-300 underline'
-                      : isLight
-                      ? 'text-gray-950'
-                      : 'text-gray-100'
-                  } hover:text-gray-500 hover:underline`}
-                >
-                  <Link to={link.path}>{t(string as TranslationKeys)}</Link>
-                </li>
-              );
+              return <NavbarLink link={link} string={string}/>;
             })}
           </ul>
         </div>

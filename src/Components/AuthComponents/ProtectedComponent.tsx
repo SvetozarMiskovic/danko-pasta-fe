@@ -2,22 +2,28 @@ import React from 'react';
 import { Navigate } from 'react-router';
 import { useAuth } from '../../contexts/AuthContextProvider';
 import { CircleDashed } from 'lucide-react';
+import { URL_CONSTANTS } from '../../constants';
 
-const ProtectedComponent = ({children}: {children: React.ReactNode}) => {
-    const {isAuthenticated, isLoading} = useAuth()
+const ProtectedComponent = ({ children }: { children: React.ReactNode }) => {
+  const { isAuthenticated, isLoading } = useAuth();
 
-    if(isLoading){
-        return <div className='flex items-center justify-center'><CircleDashed className='animate-spin'/> </div>
-    }
-
-    if(!isAuthenticated){
-        return <Navigate to="/login" replace={true}/>
-    }
+  if (isLoading) {
     return (
-        <>
-        {children}
-        </>
+      <div className='flex items-center justify-center'>
+        <CircleDashed className='animate-spin' />{' '}
+      </div>
     );
-}
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <Navigate
+        to={URL_CONSTANTS.AUTH.LOGIN}
+        replace={true}
+      />
+    );
+  }
+  return <>{children}</>;
+};
 
 export default ProtectedComponent;

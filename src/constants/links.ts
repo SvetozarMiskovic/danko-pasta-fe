@@ -21,3 +21,5 @@ export const links = [
     icon: LocateIcon,
   },
 ];
+
+export type NavbarLinkType = (typeof links)[0];
