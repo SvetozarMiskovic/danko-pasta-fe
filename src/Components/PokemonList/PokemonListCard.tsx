@@ -47,7 +47,7 @@ const PokemonListCard = ({
       </div>
       <div className='flex p-2 justify-evenly '>
         <div className='flex flex-col items-center text-center w-24 h-24 gap-3'>
-          <div className='flex items-center max-h-24'>
+          <div className='flex items-center max-h-24 h-full'>
             <PokemonImage string={activePokemon ? backDefault : frontDefault} />
           </div>
 
@@ -64,7 +64,7 @@ const PokemonListCard = ({
           </h3>
         </div>
         <div className='flex flex-col  items-center text-center w-24 gap-3'>
-          <div className='flex items-center max-h-24'>
+          <div className='flex items-center max-h-24 h-full'>
             <PokemonImage string={activePokemon ? backShiny : frontShiny} />
           </div>
 
