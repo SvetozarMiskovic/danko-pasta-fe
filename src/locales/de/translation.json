@@ -67,5 +67,6 @@
   "menu_user": " Benutzer",
   "logout": "Abmelden",
   "pagination_limit": "Seitengrenze",
-  "unknown": "Unbekannt"
+  "unknown": "Unbekannt",
+  "empty_list": "Entschuldigung, konnte nicht finden."
 }

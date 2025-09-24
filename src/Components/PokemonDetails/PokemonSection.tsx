@@ -1,7 +1,7 @@
 import { CircleDashed, PackageOpen } from 'lucide-react';
-import type { SectionDetails } from '../../hooks/usePokemonDetails';
 import { useTheme } from '../../contexts/ThemeContextProvider';
 import { useTranslate } from '../../hooks/useTranslate';
+import type { SectionDetails } from '../../types';
 
 type PokemonSectionProps<T> = {
   title: string;

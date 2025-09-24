@@ -1,32 +1,13 @@
 import { useState } from 'react';
 import { useToast } from '../contexts/ToastProvider';
 import {
-  type Ability,
   type Pokemon,
   type PokemonByIdResponse,
-  type PokemonForm,
-  type PokemonMoves,
-  type PokemonSpecies,
-  type PokemonType,
+  type SectionDetails,
+  type SectionLoading,
 } from '../types/index';
 import { useCache } from './useCache';
-import env from '../env';
-
-export type SectionDetails = {
-  abilities: Ability[] | null;
-  moves: PokemonMoves[] | null;
-  types: PokemonType[] | null;
-  species: PokemonSpecies[] | null;
-  forms: PokemonForm[] | null;
-};
-
-type SectionLoading = {
-  abilities: boolean;
-  types: boolean;
-  moves: boolean;
-  forms: boolean;
-  species: boolean;
-};
+import { URL_CONSTANTS } from '../constants';
 
 export const usePokemonDetails = () => {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
@@ -61,11 +42,10 @@ export const usePokemonDetails = () => {
       setLoading(false);
       return;
     }
-    const isDev = env.VITE_NODE_ENV === 'development';
 
     try {
       const response = await fetch(
-        isDev ? env.VITE_DEV_SERVER : `${env.VITE_PROD_SERVER}/${id}`,
+        URL_CONSTANTS.FETCH_POKEMON_ID(id.toString()),
         {
           method: 'GET',
           headers: {

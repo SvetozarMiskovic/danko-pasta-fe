@@ -67,5 +67,6 @@
   "menu_user": " Korisnik",
   "logout": "Odjava",
   "pagination_limit": "Ograničenje stranice",
-  "unknown": "Nepoznato"
+  "unknown": "Nepoznato",
+  "empty_list": "Izvini, nisam mogao da pronađem."
 }

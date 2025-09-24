@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useTheme } from '../../../contexts/ThemeContextProvider';
 import { useSearchParams } from '../../../hooks/useSearchParams';
-import type { PaginationMeta } from '../../../hooks/usePokemons';
 import { CircleDashed } from 'lucide-react';
+import type { PaginationMeta } from '../../../types';
 
 const PaginationPages = ({
   pagination,

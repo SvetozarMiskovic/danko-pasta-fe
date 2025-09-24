@@ -67,5 +67,6 @@
   "menu_user": " User",
   "logout": "Logout",
   "pagination_limit": "Page limit",
-  "unknown": "Unknown"
+  "unknown": "Unknown",
+  "empty_list": "Sorry, couldn't find"
 }

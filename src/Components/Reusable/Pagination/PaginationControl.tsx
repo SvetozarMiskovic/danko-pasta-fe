@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useTheme } from '../../../contexts/ThemeContextProvider';
-import type { PaginationMeta } from '../../../hooks/usePokemons';
+import type { PaginationMeta } from '../../../types';
 
 const PaginationControl = ({
   pagination,

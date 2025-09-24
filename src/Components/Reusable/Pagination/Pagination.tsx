@@ -1,8 +1,8 @@
-import type { PaginationMeta } from '../../../hooks/usePokemons';
 import { useTheme } from '../../../contexts/ThemeContextProvider';
 import PaginationLimit from './PaginationLimit';
 import PaginationPages from './PaginationPages';
 import PaginationControl from './PaginationControl';
+import type { PaginationMeta } from '../../../types';
 
 const Pagination = ({
   loading,

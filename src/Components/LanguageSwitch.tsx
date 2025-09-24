@@ -3,9 +3,7 @@ import { useTranslate } from '../hooks/useTranslate';
 import { useTheme } from '../contexts/ThemeContextProvider';
 import { DE, RS, US } from 'country-flag-icons/react/3x2';
 import { AnimatePresence, motion } from 'framer-motion';
-import type { TranslationKeys } from '../types';
-
-type Language = 'en' | 'de' | 'sr' | 'sr-Latn';
+import type { Language, TranslationKeys } from '../types';
 
 const lngs = [
   {
@@ -41,7 +39,7 @@ const LanguageSwitch = () => {
 
   useEffect(() => {
     changeLanguage(activeLng);
-    // eslint-disable-next-line react-hooks/exhaustive-deps 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeLng]);
 
   function updateLanguage(lang: Language) {

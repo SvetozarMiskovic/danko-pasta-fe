@@ -201,3 +201,105 @@ export interface PokemonForm {
     front_default: string | null;
   };
 }
+export type Language = 'en' | 'de' | 'sr' | 'sr-Latn';
+
+export type SectionDetails = {
+  abilities: Ability[] | null;
+  moves: PokemonMoves[] | null;
+  types: PokemonType[] | null;
+  species: PokemonSpecies[] | null;
+  forms: PokemonForm[] | null;
+};
+
+export type SectionLoading = {
+  abilities: boolean;
+  types: boolean;
+  moves: boolean;
+  forms: boolean;
+  species: boolean;
+};
+
+export type RegisterUserParams = LoginUserParams & { name: string };
+export interface AuthContextType {
+  isAuthenticated: boolean;
+  login: ({ email, password }: LoginUserParams) => Promise<LoginResponse>;
+  logout: () => void;
+  register: ({
+    email,
+    password,
+    name,
+  }: RegisterUserParams) => Promise<RegisterResponse>;
+  user: User | null;
+  isLoading: boolean;
+}
+
+export interface LoginUserParams {
+  email: string;
+  password: string;
+}
+
+export interface User {
+  name: string;
+  email: string;
+  id: string;
+}
+export interface LoginResponse {
+  message: string;
+  success: boolean;
+  id: string;
+  email: string;
+  name: string;
+}
+export interface RegisterResponse {
+  message: string;
+  id: string;
+  success: boolean;
+}
+
+export type AuthResponse = {
+  message: string;
+  success: boolean;
+  [key: string]: unknown;
+};
+
+export interface SpritesResponse {
+  backDefault: string;
+  backShiny: string;
+  frontDefault: string;
+  frontShiny: string;
+}
+
+export interface SpritesData {
+  backDefault: Blob | null;
+  backShiny: Blob | null;
+  frontDefault: Blob | null;
+  frontShiny: Blob | null;
+}
+export interface PokemonListData {
+  name: string;
+  url: string;
+  id: string | undefined;
+  sprites: SpritesResponse | SpritesData;
+}
+
+export interface PaginationMeta {
+  currentPage: number;
+  totalItems: number;
+  itemsPerPage: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+}
+
+export interface PokemonListItemResponse {
+  success: boolean;
+  message: string;
+  data: PokemonListData[];
+  pagination: PaginationMeta;
+}
+
+export type SpriteKeys =
+  | 'backDefault'
+  | 'backShiny'
+  | 'frontDefault'
+  | 'frontShiny';

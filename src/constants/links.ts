@@ -1,22 +1,23 @@
 import { Bug, Home, LocateIcon } from 'lucide-react';
+import { LINK_CONSTANTS } from '.';
 
 export const links = [
   {
     id: 1,
     text: 'Home',
-    path: '/',
+    path: LINK_CONSTANTS.HOME,
     icon: Home,
   },
   {
     id: 2,
     text: 'Pokemons',
-    path: '/pokemons',
+    path: LINK_CONSTANTS.POKEMONS,
     Icon: Bug,
   },
   {
     id: 3,
     text: 'Locations',
-    path: '/pokemons/locations',
+    path: LINK_CONSTANTS.LOCATIONS,
     icon: LocateIcon,
   },
 ];

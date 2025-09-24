@@ -108,13 +108,13 @@ const PokemonList = () => {
             goPrevPage={goPrevPage}
           />
         )}
-        {pokemons.length < 1 && !search && (
+        {pokemons.length < 1 && search && (
           <div
             className={`p-4 border-t border-black ${
               isLight ? 'text-black' : 'text-white'
             } text-3xl flex items-center justify-center gap-4`}
           >
-            <Annoyed size={50} /> Sorry, couldn't find "{search}"
+            <Annoyed size={50} /> {t('empty_list')} "{search}"
           </div>
         )}
       </div>

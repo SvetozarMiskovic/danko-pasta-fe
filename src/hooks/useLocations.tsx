@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from './useSearchParams';
-import {
-  type PaginationMeta,
-  type PokemonListItemResponse,
-} from './usePokemons';
 import { useCache } from './useCache';
-import type { NamedAPIResource } from '../types';
-import env from '../env';
+import type {
+  NamedAPIResource,
+  PaginationMeta,
+  PokemonListItemResponse,
+} from '../types';
+import { URL_CONSTANTS } from '../constants';
 
 export const useLocations = () => {
   const [locations, setLocations] = useState<{ name: string; url: string }[]>(
@@ -44,20 +44,13 @@ export const useLocations = () => {
       }
       setLoadingLocations(true);
 
-      const isDev = env.VITE_NODE_ENV === 'development';
-
-      const response = await fetch(
-        isDev
-          ? env.VITE_DEV_SERVER
-          : `${env.VITE_PROD_SERVER}/api/pokemons/locations?${searchQuery}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-        }
-      );
+      const response = await fetch(URL_CONSTANTS.FETCH_LOCATIONS(searchQuery), {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
 
       if (!response.ok) throw new Error('Failed to fetch locations');
 
