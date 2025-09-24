@@ -28,7 +28,7 @@ const PokemonModalContent = ({
     <>
       {loading ? (
         <div className='flex flex-1 h-full w-full items-center justify-center'>
-          <Loading text='Loading Pokemons...' />
+          <Loading text={t('loadingPokemon')} />
         </div>
       ) : (
         <>

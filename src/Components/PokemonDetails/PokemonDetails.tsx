@@ -46,7 +46,7 @@ const PokemonDetails = () => {
   ]);
   const { t } = useTranslate();
   if (loading) {
-    return <Loading text='Loading Pokemon Details' />;
+    return <Loading text={t('loadingPokemon')} />;
   }
 
   console.log(

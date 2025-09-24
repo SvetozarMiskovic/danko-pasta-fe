@@ -1,18 +1,16 @@
 import React from 'react';
 import { Navigate } from 'react-router';
 import { useAuth } from '../../contexts/AuthContextProvider';
-import { CircleDashed } from 'lucide-react';
 import { URL_CONSTANTS } from '../../constants';
+import Loading from '../Reusable/Loading';
+import { useTranslate } from '../../hooks/useTranslate';
 
 const ProtectedComponent = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated, isLoading } = useAuth();
+  const { t } = useTranslate();
 
   if (isLoading) {
-    return (
-      <div className='flex items-center justify-center'>
-        <CircleDashed className='animate-spin' />{' '}
-      </div>
-    );
+    return <Loading text={t('loading')} />;
   }
 
   if (!isAuthenticated) {

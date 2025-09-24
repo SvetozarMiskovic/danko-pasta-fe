@@ -23,7 +23,7 @@ const PokemonList = () => {
     updateSearchParams({ page: 1, search: e.target.value.toString() });
   }
   const { t } = useTranslate();
- 
+
   return (
     <div className='w-full max-w-7xl mx-auto place-self-start duration-200 p-2'>
       <div className='flex flex-col gap-2'>
@@ -69,7 +69,7 @@ const PokemonList = () => {
         )}
 
         {loading ? (
-          <Loading text='Loading Pokemons...' />
+          <Loading text={t('loadingPokemon')} />
         ) : (
           <ul className='grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid w-full gap-4'>
             {pokemons.map((pokemon) => {
