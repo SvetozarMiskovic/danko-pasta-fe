@@ -63,7 +63,7 @@ const PokemonDetails = () => {
           }`}
         >
           <div className='flex w-full flex-col md:flex-row justify-between gap-2'>
-            <div className='w-full  flex flex-col gap-2'>
+            <div className='w-full flex flex-col gap-2'>
               <PokemonImage
                 string={
                   pokemon.sprites.other['official-artwork']
@@ -71,7 +71,7 @@ const PokemonDetails = () => {
                 }
               />
             </div>
-            <div className='w-full flex flex-col gap-2'>
+            <div className='w-full h-full flex flex-col gap-2'>
               <PokemonStatTitle
                 name={pokemon?.name}
                 xp={pokemon?.base_experience}
