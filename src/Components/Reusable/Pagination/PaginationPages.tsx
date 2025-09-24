@@ -67,6 +67,13 @@ const PaginationPages = ({
           return (
             <div
               key={index}
+              tabIndex={0}
+              role='button'
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handlePageClick(Number(number));
+                }
+              }}
               onClick={() => handlePageClick(Number(number))}
               className={`${
                 page.toString() === number.toString()

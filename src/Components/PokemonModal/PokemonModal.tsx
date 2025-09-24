@@ -28,6 +28,7 @@ const PokemonModal = ({ trigger, title, id }: PokemonDetailModalProps) => {
       <PokemonModalTrigger
         setIsOpen={setIsOpen}
         trigger={trigger}
+        
       />
       {isOpen && (
         <div

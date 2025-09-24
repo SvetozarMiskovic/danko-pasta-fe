@@ -7,6 +7,13 @@ const ThemeToggle = ({ className }: { className?: string }) => {
 
   return (
     <div
+      tabIndex={0}
+      role='button'
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          toggleTheme();
+        }
+      }}
       onClick={toggleTheme}
       className={`relative my-2 flex items-center w-20 h-9 rounded-full cursor-pointer transition-colors
         ${isLight ? 'bg-gray-200' : 'bg-gray-600'} ${className}`}

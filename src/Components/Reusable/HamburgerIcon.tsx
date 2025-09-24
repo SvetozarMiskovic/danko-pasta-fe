@@ -6,6 +6,13 @@ const HamburgerIcon = () => {
   const { toggleSidebar, isOpen } = useSidebar();
   return (
     <div
+      tabIndex={0}
+      role='button'
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          toggleSidebar();
+        }
+      }}
       onClick={() => toggleSidebar()}
       className='md:hidden w-fit h-fit cursor-pointer z-5'
     >

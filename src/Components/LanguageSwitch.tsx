@@ -52,8 +52,14 @@ const LanguageSwitch = () => {
   };
   return (
     <div
+      tabIndex={0}
+      role='button'
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          toggleOpen();
+        }
+      }}
       onClick={() => toggleOpen()}
-      id='menu-btn'
       className={` flex flex-col gap-2 p-2 w-full rounded-lg justify-center items-center ${
         isLight ? 'bg-gray-100 text-black' : 'bg-gray-600 text-white'
       }`}
@@ -93,6 +99,13 @@ const LanguageSwitch = () => {
               return (
                 <div
                   key={l.code}
+                  tabIndex={0}
+                  role='button'
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      updateLanguage(l.code as Language);
+                    }
+                  }}
                   onClick={() => updateLanguage(l.code as Language)}
                   className={`flex min-h-8 gap-2 cursor-pointer items-center transition-colors duration-300 justify-center rounded-md ${
                     isLight

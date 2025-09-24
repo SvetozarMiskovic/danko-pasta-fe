@@ -30,6 +30,11 @@ const Menu = () => {
     <div className='relative w-1/3 z-10 hidden md:block'>
       <button
         id='menu'
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') {
+            setOpened(false);
+          }
+        }}
         onClick={() => setOpened((prev) => !prev)}
         className={`p-2 font-semibold flex justify-center text-lg items-center gap-2 w-full ${
           isLight ? 'bg-gray-100 text-black' : 'bg-gray-600 text-white'
@@ -50,11 +55,14 @@ const Menu = () => {
       <AnimatePresence>
         {opened && (
           <motion.div
+            aria-hidden={!opened}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
-            className={`p-2 border-b border-r border-l border-cyan-600 absolute w-full overflow-hidden flex flex-col gap-2 ${
+            className={`p-2 ${
+              opened ? 'flex' : 'hidden'
+            } border-b border-r border-l border-cyan-600 absolute w-full overflow-hidden  flex-col gap-2 ${
               isLight ? 'bg-gray-300' : 'bg-gray-800'
             } `}
           >
