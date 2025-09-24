@@ -28,10 +28,14 @@ const PokemonModal = ({ trigger, title, id }: PokemonDetailModalProps) => {
       <PokemonModalTrigger
         setIsOpen={setIsOpen}
         trigger={trigger}
-        
       />
       {isOpen && (
         <div
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') {
+              setIsOpen(false);
+            }
+          }}
           onClick={() => setIsOpen(false)}
           className='z-10 fixed inset-0 flex items-center justify-center bg-black/50 px-2'
         >
