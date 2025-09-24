@@ -23,9 +23,7 @@ const PokemonList = () => {
     updateSearchParams({ page: 1, search: e.target.value.toString() });
   }
   const { t } = useTranslate();
-  if (loading) {
-    return <Loading />;
-  }
+ 
   return (
     <div className='w-full max-w-7xl mx-auto place-self-start duration-200 p-2'>
       <div className='flex flex-col gap-2'>
