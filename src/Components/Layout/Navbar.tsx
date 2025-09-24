@@ -1,4 +1,3 @@
-
 import { BugIcon } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContextProvider';
 import HamburgerIcon from '../Reusable/HamburgerIcon';
@@ -34,7 +33,13 @@ const Navbar = () => {
           <ul className='flex items-center gap-5'>
             {links.map((link) => {
               const string = 'nav_' + link.text;
-              return <NavbarLink link={link} string={string}/>;
+              return (
+                <NavbarLink
+                  key={link.id}
+                  link={link}
+                  string={string}
+                />
+              );
             })}
           </ul>
         </div>

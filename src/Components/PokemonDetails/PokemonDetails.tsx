@@ -37,7 +37,9 @@ const PokemonDetails = () => {
   const isLight = theme === 'light';
   useEffect(() => {
     fetchPokemonDetails(Number(pokemonId));
-  }, [pokemonId, fetchPokemonDetails]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pokemonId]);
   const pokemonStats = pokemon?.stats.concat([
     { stat: { name: 'weight', url: '' }, effort: 0, base_stat: pokemon.weight },
     { stat: { name: 'height', url: '' }, effort: 0, base_stat: pokemon.height },
@@ -46,6 +48,11 @@ const PokemonDetails = () => {
   if (loading) {
     return <Loading text='Loading Pokemon Details' />;
   }
+
+  console.log(
+    'jebes danku',
+    pokemon?.sprites.other['official-artwork'].front_default
+  );
 
   if (pokemon)
     return (
@@ -57,7 +64,12 @@ const PokemonDetails = () => {
         >
           <div className='flex w-full flex-col md:flex-row justify-between gap-2'>
             <div className='w-full  flex flex-col gap-2'>
-              <PokemonImage sprites={pokemon?.sprites} />
+              <PokemonImage
+                string={
+                  pokemon.sprites.other['official-artwork']
+                    .front_default as string
+                }
+              />
             </div>
             <div className='w-full flex flex-col gap-2'>
               <PokemonStatTitle

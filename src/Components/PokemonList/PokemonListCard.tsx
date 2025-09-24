@@ -1,5 +1,6 @@
 import { useTheme } from '../../contexts/ThemeContextProvider';
 import { useTranslate } from '../../hooks/useTranslate';
+import PokemonImage from '../PokemonDetails/PokemonImage';
 
 interface PokemonListCardProps {
   pokeName: string;
@@ -31,11 +32,11 @@ const PokemonListCard = ({
       key={pokeName}
       onMouseLeave={() => onMouseLeave()}
       onMouseEnter={() => onMouseEnter()}
-      className={`${
+      className={`flex flex-col ${
         isLight ? 'bg-white hover:bg-gray-100' : 'bg-gray-800 hover:bg-gray-600'
       } duration-200 border-gray-400 border shadow-sm h-full rounded-lg `}
     >
-      <div>
+      <div className='flex flex-1 h-full'>
         <h2
           className={`p-4 capitalize ${
             isLight ? 'text-black' : 'text-white'
@@ -46,15 +47,9 @@ const PokemonListCard = ({
       </div>
       <div className='flex p-2 justify-evenly '>
         <div className='flex flex-col items-center text-center w-24 h-24 gap-3'>
-          <img
-            loading='lazy'
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = '/placeholder.png';
-            }}
-            className='h-24'
-            src={activePokemon ? backDefault : frontDefault}
-            alt='slika'
-          />
+          <div className='flex items-center max-h-24'>
+            <PokemonImage string={activePokemon ? backDefault : frontDefault} />
+          </div>
 
           <h3
             className={`text-xl uppercase underline underline-offset-4 transition-all delay-75 ease-in ${
@@ -69,16 +64,10 @@ const PokemonListCard = ({
           </h3>
         </div>
         <div className='flex flex-col  items-center text-center w-24 gap-3'>
-          <img
-            loading='lazy'
-            className='
-                h-24'
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src =
-                '../../public/placeholder.png';
-            }}
-            src={activePokemon ? backShiny : frontShiny}
-          />
+          <div className='flex items-center max-h-24'>
+            <PokemonImage string={activePokemon ? backShiny : frontShiny} />
+          </div>
+
           <h3
             className={`text-xl uppercase underline underline-offset-4 transition-all delay-75 ease-in ${
               activePokemon

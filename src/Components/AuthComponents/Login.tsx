@@ -25,8 +25,8 @@ const Login = () => {
         >
           {t('loginMain')}
         </h3>
+        <LoginForm />
       </div>
-      <LoginForm />
     </div>
   );
 };

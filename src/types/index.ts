@@ -64,7 +64,7 @@ export interface SpriteMap {
   front_shiny_female: string | null;
   other: {
     'official-artwork': {
-      front_default: string | Blob | null;
+      front_default: string | Blob | null | PokemonImageCache;
       front_shiny: string;
     };
   };
@@ -87,6 +87,22 @@ export interface Cries {
   legacy: string;
 }
 
+export type PokemonImageCache = {
+  blob: Blob;
+  url: string;
+};
+
+export interface SpriteMapCache extends SpriteMap {
+  other: {
+    'official-artwork': {
+      front_shiny: string;
+      front_default: PokemonImageCache;
+    };
+  };
+}
+export interface PokemonCache extends Pokemon {
+  sprites: SpriteMapCache;
+}
 export interface Pokemon {
   abilities: Ability[];
   base_experience: number;

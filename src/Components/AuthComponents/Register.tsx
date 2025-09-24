@@ -24,9 +24,8 @@ const Register = () => {
         >
           {t('registerMain')}
         </h3>
+        <RegisterForm />
       </div>
-
-      <RegisterForm />
     </div>
   );
 };

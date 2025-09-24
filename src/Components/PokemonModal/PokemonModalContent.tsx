@@ -42,7 +42,12 @@ const PokemonModalContent = ({
           </Link>
           <div className='flex flex-col md:flex-row w-full justify-between gap-2'>
             <div className='w-full  flex flex-col gap-2'>
-              <PokemonImage sprites={pokemon?.sprites} />
+              <PokemonImage
+                string={
+                  pokemon?.sprites.other['official-artwork']
+                    .front_default as string
+                }
+              />
             </div>
             <div className='w-full flex flex-col gap-2'>
               <PokemonStatTitle
