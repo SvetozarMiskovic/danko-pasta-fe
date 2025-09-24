@@ -1,4 +1,3 @@
-import React from 'react';
 import type { NavbarLinkType } from '../../constants/links';
 import { Link, useLocation } from 'react-router';
 import { useTheme } from '../../contexts/ThemeContextProvider';

@@ -1,10 +1,9 @@
-import { Link, useLocation } from 'react-router';
+
 import { BugIcon } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContextProvider';
 import HamburgerIcon from '../Reusable/HamburgerIcon';
 import Menu from '../Menu';
 import { useTranslate } from '../../hooks/useTranslate';
-import type { TranslationKeys } from '../../types';
 import { links } from '../../constants/links';
 import NavbarLink from './NavbarLink';
 
