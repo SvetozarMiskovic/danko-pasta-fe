@@ -36,7 +36,7 @@ const PaginationControl = ({
         <button
           className={`border border-gray-400 rounded-md cursor-pointer ${
             !pagination.hasNextPage
-              ? 'text-gray-200'
+              ? 'text-gray-400'
               : isLight
               ? 'text-black hover:text-cyan-800'
               : 'text-white hover:text-cyan-600'
