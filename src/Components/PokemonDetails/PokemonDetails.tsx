@@ -49,11 +49,6 @@ const PokemonDetails = () => {
     return <Loading text={t('loadingPokemon')} />;
   }
 
-  console.log(
-    'jebes danku',
-    pokemon?.sprites.other['official-artwork'].front_default
-  );
-
   if (pokemon)
     return (
       <div className='max-w-7xl w-full m-auto'>

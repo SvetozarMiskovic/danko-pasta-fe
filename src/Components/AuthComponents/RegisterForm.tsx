@@ -74,7 +74,7 @@ const RegisterForm = () => {
           confirmPassword: '',
         };
 
-        console.log('Validation errors', err.issues);
+
         err.issues.forEach((issue) => {
           const field = issue.path[0] as keyof typeof newErrors;
           newErrors[field] = issue.message;
