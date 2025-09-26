@@ -47,7 +47,7 @@ const LoginForm = () => {
           email: '',
           password: '',
         };
-       
+
         err.issues.forEach((issue) => {
           const field = issue.path[0] as keyof typeof newErrors;
           newErrors[field] = issue.message;
@@ -88,7 +88,7 @@ const LoginForm = () => {
           isDisabled ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-400'
         } w-full text-white cursor-pointer px-4 py-2 rounded  flex justify-center items-center gap-2`}
       >
-        {t('loginMain')}
+        {t('login_main')}
         {submiting && <CircleDashed className='animate-spin' />}
       </button>
       <Link

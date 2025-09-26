@@ -69,7 +69,7 @@ const PokemonList = () => {
         )}
 
         {loading ? (
-          <Loading text={t('loadingPokemon')} />
+          <Loading text={t('loading_pokemon')} />
         ) : (
           <ul className='grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid w-full gap-4'>
             {pokemons.map((pokemon) => {

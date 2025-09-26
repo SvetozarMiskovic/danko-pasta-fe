@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from './useSearchParams';
 import { useToast } from '../contexts/ToastProvider';
 import { useCache } from './useCache';
@@ -31,7 +31,7 @@ const usePokemons = () => {
 
   const debouncedSearch = useDebounce(search, 500);
 
-  const fetchPokemons = async () => {
+  const fetchPokemons = useCallback(async () => {
     const queryParams = new URLSearchParams({
       page: page.toString(),
       limit: limit.toString(),
@@ -110,42 +110,39 @@ const usePokemons = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  useEffect(() => {
-    updateSearchParams({ page, limit, search });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [page, debouncedSearch, limit, setCache, getCache]);
 
   useEffect(() => {
     fetchPokemons();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, limit, debouncedSearch]);
+  }, [fetchPokemons]);
 
-  const fetchPokemonDetails = async (id: string) => {
-    try {
-      const response = await fetch(URL_CONSTANTS.FETCH_POKEMON_ID(id), {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-      });
-      if (!response.ok) {
-        throw new Error('Failed to fetch pokemons');
+  const fetchPokemonDetails = useCallback(
+    async (id: string) => {
+      try {
+        const response = await fetch(URL_CONSTANTS.FETCH_POKEMON_ID(id), {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        });
+        if (!response.ok) {
+          throw new Error('Failed to fetch pokemons');
+        }
+        const data: PokemonListItemResponse = await response.json();
+
+        setLoading(false);
+        addToast(data.message, 'info');
+        setPokemons(data.data);
+        setPagination(data.pagination);
+      } catch (error) {
+        setError((error as Error).message);
+      } finally {
+        setLoading(false);
       }
-      const data: PokemonListItemResponse = await response.json();
-
-      setLoading(false);
-      addToast(data.message, 'info');
-      setPokemons(data.data);
-      setPagination(data.pagination);
-    } catch (error) {
-      setError((error as Error).message);
-    } finally {
-      setLoading(false);
-    }
-  };
+    },
+    [addToast]
+  );
 
   const goNextPage = (page: number) => {
     updateSearchParams({ page: page + 1 });

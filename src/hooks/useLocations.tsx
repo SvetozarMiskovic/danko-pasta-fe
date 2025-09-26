@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from './useSearchParams';
 import { useCache } from './useCache';
 import type {
@@ -17,17 +17,7 @@ export const useLocations = () => {
   const { getCache, setCache } = useCache();
   const { page, limit, updateSearchParams } = useSearchParams();
 
-  useEffect(() => {
-    updateSearchParams({ page, limit });
-  }, []);
-
-  useEffect(() => {
-    fetchLocations();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, limit]);
-
-  async function fetchLocations() {
+  const fetchLocations = useCallback(async () => {
     const searchQuery = new URLSearchParams({
       page: page.toString(),
       limit: limit.toString(),
@@ -66,7 +56,11 @@ export const useLocations = () => {
     } catch (error) {
       console.warn(error);
     }
-  }
+  }, [setCache, getCache, page, limit]);
+
+  useEffect(() => {
+    fetchLocations();
+  }, [page, limit, fetchLocations]);
 
   const goNextPage = (page: number) => {
     updateSearchParams({ page: page + 1 });

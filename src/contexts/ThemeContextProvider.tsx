@@ -22,8 +22,7 @@ function ThemeContextProvider({ children }: { children: React.ReactNode }) {
     } else {
       localStorage.setItem('theme', theme);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

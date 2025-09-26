@@ -74,7 +74,6 @@ const RegisterForm = () => {
           confirmPassword: '',
         };
 
-
         err.issues.forEach((issue) => {
           const field = issue.path[0] as keyof typeof newErrors;
           newErrors[field] = issue.message;
@@ -130,9 +129,9 @@ const RegisterForm = () => {
         onChange={(e) =>
           setFormData({ ...formData, confirmPassword: e.target.value })
         }
-        label={t('confirmPassword')}
+        label={t('confirm_password')}
         type='password'
-        placeholder={t('confirmPassword')}
+        placeholder={t('confirm_password')}
         required
       />
 
@@ -143,7 +142,7 @@ const RegisterForm = () => {
           isDisabled ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-400'
         } flex items-center justify-center gap-2 w-full text-white cursor-pointer px-4 py-2 rounded`}
       >
-        {t('registerMain')}{' '}
+        {t('register_main')}
         {isSubmiting && <CircleDashed className='animate-spin' />}
       </button>
       <Link

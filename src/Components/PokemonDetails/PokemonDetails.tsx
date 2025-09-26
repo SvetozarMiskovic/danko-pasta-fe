@@ -37,16 +37,14 @@ const PokemonDetails = () => {
   const isLight = theme === 'light';
   useEffect(() => {
     fetchPokemonDetails(Number(pokemonId));
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pokemonId]);
+  }, [pokemonId, fetchPokemonDetails]);
   const pokemonStats = pokemon?.stats.concat([
     { stat: { name: 'weight', url: '' }, effort: 0, base_stat: pokemon.weight },
     { stat: { name: 'height', url: '' }, effort: 0, base_stat: pokemon.height },
   ]);
   const { t } = useTranslate();
   if (loading) {
-    return <Loading text={t('loadingPokemon')} />;
+    return <Loading text={t('loading_pokemon')} />;
   }
 
   if (pokemon)

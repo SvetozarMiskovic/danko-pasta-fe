@@ -2,27 +2,28 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useTranslate } from '../hooks/useTranslate';
 
+const fe = [
+  'React ',
+  'TypeScript',
+  'Vite',
+  'Zod',
+  'TailwindCSS',
+  'React Router',
+  'Lucide Icons',
+];
+const be = [
+  'Node.js',
+  'Express',
+  'TypeScript',
+  'SQLite3',
+  'Zod',
+  'JWT',
+  'Bcrypt',
+  'Node-Cache',
+];
+
 const MainPage = () => {
   const { t } = useTranslate();
-  const fe = [
-    'React ',
-    'TypeScript',
-    'Vite',
-    'Zod',
-    'TailwindCSS',
-    'React Router',
-    'Lucide Icons',
-  ];
-  const be = [
-    'Node.js',
-    'Express',
-    'TypeScript',
-    'SQLite3',
-    'Zod',
-    'JWT',
-    'Bcrypt',
-    'Node-Cache',
-  ];
 
   const [feIndex, setFeIndex] = useState(0);
   const [beIndex, setBeIndex] = useState(0);
@@ -50,8 +51,6 @@ const MainPage = () => {
       clearInterval(feInterval);
       clearInterval(beInterval);
     };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

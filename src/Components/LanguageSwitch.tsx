@@ -39,8 +39,7 @@ const LanguageSwitch = () => {
 
   useEffect(() => {
     changeLanguage(activeLng);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeLng]);
+  }, [activeLng, changeLanguage]);
 
   function updateLanguage(lang: Language) {
     setActiveLng(lang);

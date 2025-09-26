@@ -25,7 +25,7 @@ const MobileSidebar = () => {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [closeSidebar]);
 
   useEffect(() => {
     if (open) {

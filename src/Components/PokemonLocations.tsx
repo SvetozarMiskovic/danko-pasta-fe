@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useLocations } from '../hooks/useLocations';
 import Pagination from './Reusable/Pagination/Pagination';
 import { useTheme } from '../contexts/ThemeContextProvider';
@@ -6,20 +5,11 @@ import type { TranslationKeys } from '../types';
 import { useTranslate } from '../hooks/useTranslate';
 
 function PokemonLocations() {
-  const {
-    locations,
-    pagination,
-    loadingLocations,
-    fetchLocations,
-    goNextPage,
-    goPrevPage,
-  } = useLocations();
+  const { locations, pagination, loadingLocations, goNextPage, goPrevPage } =
+    useLocations();
   const { theme } = useTheme();
   const isLight = theme === 'light';
   const { t } = useTranslate();
-  useEffect(() => {
-    fetchLocations();
-  }, [fetchLocations]);
 
   return (
     <div className='max-w-7xl w-full mx-auto my-4  flex flex-col gap-4 p-2'>

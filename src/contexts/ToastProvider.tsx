@@ -1,6 +1,7 @@
 import { CheckCircle, Info, XCircle } from 'lucide-react';
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -24,18 +25,21 @@ const ToastContext = createContext<ToastContextType | undefined>(undefined);
 export const ToastProvider = ({ children }: { children: ReactNode }) => {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
-  const addToast = (message: string, type: Toast['type'] = 'info') => {
-    const id = Date.now();
-    setToasts((prev) => [...prev, { id, message, type }]);
-
-    setTimeout(() => {
-      removeToast(id);
-    }, 5000);
-  };
-
-  const removeToast = (id: number) => {
+  const removeToast = useCallback((id: number) => {
     setToasts((prev) => prev.filter((t) => t.id !== id));
-  };
+  }, []);
+
+  const addToast = useCallback(
+    (message: string, type: Toast['type'] = 'info') => {
+      const id = Date.now();
+      setToasts((prev) => [...prev, { id, message, type }]);
+
+      setTimeout(() => {
+        removeToast(id);
+      }, 5000);
+    },
+    [removeToast]
+  );
 
   return (
     <ToastContext.Provider value={{ toasts, addToast, removeToast }}>
