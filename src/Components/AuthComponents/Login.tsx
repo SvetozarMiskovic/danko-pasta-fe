@@ -23,7 +23,7 @@ const Login = () => {
             isLight ? 'text-black' : 'text-white'
           } text-3xl text-center mb-4`}
         >
-          {t('loginMain')}
+          {t('login_main')}
         </h3>
         <LoginForm />
       </div>

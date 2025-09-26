@@ -22,7 +22,7 @@ const Register = () => {
             isLight ? 'text-black' : 'text-white'
           } text-3xl text-center mb-4`}
         >
-          {t('registerMain')}
+          {t('register_main')}
         </h3>
         <RegisterForm />
       </div>
